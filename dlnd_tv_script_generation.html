@@ -12441,7 +12441,7 @@ Tests Passed
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">build_nn</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">rnn_size</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
-    <span class="n">embed</span> <span class="o">=</span> <span class="n">get_embed</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span><span class="n">vocab_size</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">embed</span> <span class="o">=</span> <span class="n">get_embed</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span><span class="n">vocab_size</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">embed</span><span class="p">)</span>
     <span class="n">outputs</span><span class="p">,</span><span class="n">final_State</span> <span class="o">=</span> <span class="n">build_rnn</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span><span class="n">embed</span><span class="p">)</span>
     <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span><span class="n">activation_fn</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span><span class="n">num_outputs</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span><span class="n">weights_initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal_initializer</span><span class="p">(),</span><span class="n">biases_initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_initializer</span><span class="p">())</span>
@@ -12467,9 +12467,9 @@ Tests Passed
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Tensor(&#34;embedding_lookup:0&#34;, shape=(128, 5, 200), dtype=float32)
-Tensor(&#34;embedding_lookup:0&#34;, shape=(128, 5, 200), dtype=float32)
-Tensor(&#34;transpose:0&#34;, shape=(200, 5, 128), dtype=float32)
+<pre>Tensor(&#34;embedding_lookup:0&#34;, shape=(128, 5, 300), dtype=float32)
+Tensor(&#34;embedding_lookup:0&#34;, shape=(128, 5, 300), dtype=float32)
+Tensor(&#34;transpose:0&#34;, shape=(300, 5, 128), dtype=float32)
 Tensor(&#34;fully_connected/Relu:0&#34;, shape=(128, 5, 27), dtype=float32)
 Tests Passed
 </pre>
@@ -12623,7 +12623,7 @@ Tests Passed
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12670,9 +12670,9 @@ Tests Passed
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>256
-Tensor(&#34;embedding_lookup:0&#34;, shape=(?, ?, 200), dtype=float32)
-Tensor(&#34;embedding_lookup:0&#34;, shape=(?, ?, 200), dtype=float32)
-Tensor(&#34;transpose:0&#34;, shape=(200, ?, ?), dtype=float32)
+Tensor(&#34;embedding_lookup:0&#34;, shape=(?, ?, 300), dtype=float32)
+Tensor(&#34;embedding_lookup:0&#34;, shape=(?, ?, 300), dtype=float32)
+Tensor(&#34;transpose:0&#34;, shape=(300, ?, ?), dtype=float32)
 Tensor(&#34;fully_connected/Relu:0&#34;, shape=(?, ?, 6780), dtype=float32)
 </pre>
 </div>
@@ -12694,7 +12694,7 @@ Tensor(&#34;fully_connected/Relu:0&#34;, shape=(?, ?, 6780), dtype=float32)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12742,72 +12742,71 @@ Tensor(&#34;fully_connected/Relu:0&#34;, shape=(?, ?, 6780), dtype=float32)
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Epoch   0 Batch    0/13   train_loss = 8.838
-Epoch   1 Batch    7/13   train_loss = 7.356
-Epoch   3 Batch    1/13   train_loss = 6.385
-Epoch   4 Batch    8/13   train_loss = 5.975
-Epoch   6 Batch    2/13   train_loss = 5.646
-Epoch   7 Batch    9/13   train_loss = 5.406
-Epoch   9 Batch    3/13   train_loss = 5.130
-Epoch  10 Batch   10/13   train_loss = 5.046
-Epoch  12 Batch    4/13   train_loss = 4.848
-Epoch  13 Batch   11/13   train_loss = 4.671
-Epoch  15 Batch    5/13   train_loss = 4.535
-Epoch  16 Batch   12/13   train_loss = 4.499
-Epoch  18 Batch    6/13   train_loss = 4.197
-Epoch  20 Batch    0/13   train_loss = 4.029
-Epoch  21 Batch    7/13   train_loss = 3.947
-Epoch  23 Batch    1/13   train_loss = 3.693
-Epoch  24 Batch    8/13   train_loss = 3.667
-Epoch  26 Batch    2/13   train_loss = 3.483
-Epoch  27 Batch    9/13   train_loss = 3.339
-Epoch  29 Batch    3/13   train_loss = 3.121
-Epoch  30 Batch   10/13   train_loss = 3.139
-Epoch  32 Batch    4/13   train_loss = 2.980
-Epoch  33 Batch   11/13   train_loss = 2.879
-Epoch  35 Batch    5/13   train_loss = 2.757
-Epoch  36 Batch   12/13   train_loss = 2.660
-Epoch  38 Batch    6/13   train_loss = 2.458
-Epoch  40 Batch    0/13   train_loss = 2.412
-Epoch  41 Batch    7/13   train_loss = 2.396
-Epoch  43 Batch    1/13   train_loss = 2.223
-Epoch  44 Batch    8/13   train_loss = 2.177
-Epoch  46 Batch    2/13   train_loss = 2.089
-Epoch  47 Batch    9/13   train_loss = 2.044
-Epoch  49 Batch    3/13   train_loss = 1.930
-Epoch  50 Batch   10/13   train_loss = 1.937
-Epoch  52 Batch    4/13   train_loss = 1.824
-Epoch  53 Batch   11/13   train_loss = 1.788
-Epoch  55 Batch    5/13   train_loss = 1.728
-Epoch  56 Batch   12/13   train_loss = 1.676
-Epoch  58 Batch    6/13   train_loss = 1.606
-Epoch  60 Batch    0/13   train_loss = 1.553
-Epoch  61 Batch    7/13   train_loss = 1.638
-Epoch  63 Batch    1/13   train_loss = 1.499
-Epoch  64 Batch    8/13   train_loss = 1.553
-Epoch  66 Batch    2/13   train_loss = 1.511
-Epoch  67 Batch    9/13   train_loss = 1.446
-Epoch  69 Batch    3/13   train_loss = 1.363
-Epoch  70 Batch   10/13   train_loss = 1.406
-Epoch  72 Batch    4/13   train_loss = 1.333
-Epoch  73 Batch   11/13   train_loss = 1.342
-Epoch  75 Batch    5/13   train_loss = 1.299
-Epoch  76 Batch   12/13   train_loss = 1.313
-Epoch  78 Batch    6/13   train_loss = 1.268
-Epoch  80 Batch    0/13   train_loss = 1.174
-Epoch  81 Batch    7/13   train_loss = 1.304
-Epoch  83 Batch    1/13   train_loss = 1.200
-Epoch  84 Batch    8/13   train_loss = 1.224
-Epoch  86 Batch    2/13   train_loss = 1.196
-Epoch  87 Batch    9/13   train_loss = 1.185
-Epoch  89 Batch    3/13   train_loss = 1.130
-Epoch  90 Batch   10/13   train_loss = 1.158
-Epoch  92 Batch    4/13   train_loss = 1.120
-Epoch  93 Batch   11/13   train_loss = 1.131
-Epoch  95 Batch    5/13   train_loss = 1.127
-Epoch  96 Batch   12/13   train_loss = 1.113
-Epoch  98 Batch    6/13   train_loss = 1.084
-Model Trained and Saved
+<pre>Epoch   0 Batch    0/13   train_loss = 8.842
+Epoch   1 Batch    7/13   train_loss = 6.968
+Epoch   3 Batch    1/13   train_loss = 6.072
+Epoch   4 Batch    8/13   train_loss = 5.697
+Epoch   6 Batch    2/13   train_loss = 5.399
+Epoch   7 Batch    9/13   train_loss = 5.199
+Epoch   9 Batch    3/13   train_loss = 4.847
+Epoch  10 Batch   10/13   train_loss = 4.701
+Epoch  12 Batch    4/13   train_loss = 4.557
+Epoch  13 Batch   11/13   train_loss = 4.243
+Epoch  15 Batch    5/13   train_loss = 4.105
+Epoch  16 Batch   12/13   train_loss = 3.965
+Epoch  18 Batch    6/13   train_loss = 3.638
+Epoch  20 Batch    0/13   train_loss = 3.506
+Epoch  21 Batch    7/13   train_loss = 3.289
+Epoch  23 Batch    1/13   train_loss = 3.119
+Epoch  24 Batch    8/13   train_loss = 3.023
+Epoch  26 Batch    2/13   train_loss = 2.843
+Epoch  27 Batch    9/13   train_loss = 2.793
+Epoch  29 Batch    3/13   train_loss = 2.598
+Epoch  30 Batch   10/13   train_loss = 2.468
+Epoch  32 Batch    4/13   train_loss = 2.354
+Epoch  33 Batch   11/13   train_loss = 2.236
+Epoch  35 Batch    5/13   train_loss = 2.214
+Epoch  36 Batch   12/13   train_loss = 2.116
+Epoch  38 Batch    6/13   train_loss = 1.909
+Epoch  40 Batch    0/13   train_loss = 1.896
+Epoch  41 Batch    7/13   train_loss = 1.760
+Epoch  43 Batch    1/13   train_loss = 1.641
+Epoch  44 Batch    8/13   train_loss = 1.644
+Epoch  46 Batch    2/13   train_loss = 1.640
+Epoch  47 Batch    9/13   train_loss = 1.581
+Epoch  49 Batch    3/13   train_loss = 1.529
+Epoch  50 Batch   10/13   train_loss = 1.493
+Epoch  52 Batch    4/13   train_loss = 1.423
+Epoch  53 Batch   11/13   train_loss = 1.325
+Epoch  55 Batch    5/13   train_loss = 1.387
+Epoch  56 Batch   12/13   train_loss = 1.337
+Epoch  58 Batch    6/13   train_loss = 1.298
+Epoch  60 Batch    0/13   train_loss = 1.258
+Epoch  61 Batch    7/13   train_loss = 1.234
+Epoch  63 Batch    1/13   train_loss = 1.149
+Epoch  64 Batch    8/13   train_loss = 1.195
+Epoch  66 Batch    2/13   train_loss = 1.182
+Epoch  67 Batch    9/13   train_loss = 1.156
+Epoch  69 Batch    3/13   train_loss = 1.129
+Epoch  70 Batch   10/13   train_loss = 1.111
+Epoch  72 Batch    4/13   train_loss = 1.104
+Epoch  73 Batch   11/13   train_loss = 1.041
+Epoch  75 Batch    5/13   train_loss = 1.102
+Epoch  76 Batch   12/13   train_loss = 1.068
+Epoch  78 Batch    6/13   train_loss = 1.038
+Epoch  80 Batch    0/13   train_loss = 1.011
+Epoch  81 Batch    7/13   train_loss = 0.988
+Epoch  83 Batch    1/13   train_loss = 0.913
+Epoch  84 Batch    8/13   train_loss = 0.953
+Epoch  86 Batch    2/13   train_loss = 0.972
+Epoch  87 Batch    9/13   train_loss = 0.987
+Epoch  89 Batch    3/13   train_loss = 0.997
+Epoch  90 Batch   10/13   train_loss = 0.988
+Epoch  92 Batch    4/13   train_loss = 0.967
+Epoch  93 Batch   11/13   train_loss = 0.881
+Epoch  95 Batch    5/13   train_loss = 0.961
+Epoch  96 Batch   12/13   train_loss = 0.923
+Epoch  98 Batch    6/13   train_loss = 0.919
 </pre>
 </div>
 </div>
@@ -12828,7 +12827,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12854,7 +12853,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12893,7 +12892,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_tensors</span><span class="p">(</span><span class="n">loaded_graph</span><span class="p">):</span>
@@ -12949,7 +12948,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">pick_word</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">int_to_vocab</span><span class="p">):</span>
@@ -13002,7 +13001,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen_length</span> <span class="o">=</span> <span class="mi">200</span>
@@ -13063,23 +13062,17 @@ Model Trained and Saved
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>moe_szyslak: mid-conversation. so do you like an portuguese reynolds at tavern.
-bart_simpson: well, i&#39;m not guns.
-let you get first in my car?
-lemme just wonder page) i see it.
-homer_simpson:(can&#39;tcha?
-moe_szyslak: i can&#39;t show before a married that&#39;s not out of comic_book_guy: your ass when / he could done--
-
-
-moe_szyslak: okay, i can&#39;t remember that i goes by the great about room if you can&#39;t get not coming. and swelling, in. he&#39;ll never been nervous...(drinking at night) and&#34; biggest ever light i have return the desire..
-
-
-moe_szyslak: they uh, your keys!
-moe_szyslak:(goin&#39; spitting out beer) i one thing.
-moe_szyslak: know, i&#39;m gonna kill so you like a big lives.
-homer_simpson:(gasp of away. sir, so, you lucky one,
-homer_simpson:(latin noise), is. and i never get a o little is the goo. and boring,
-moe_szyslak: no, that&#39;s my medical.
+<pre>moe_szyslak: duffman: now, in the feeling myself in some of eight more place ever have you gotta wing a look at me a most can be a came using your christian right above in the showered with monkeyshines cure sued every door, now&#39;s your times, boys is clean a actually about beer). and you about it, be great.
+homer_simpson:(crestfallen)... marge?
+moe_szyslak: thanks, homer. no one&#39;s ever resolution was before this impending sooo a chance company even with a failure.
+always leonard? wiggum, school, somethin&#39; important.
+lenny_leonard:(quickly) let me, i&#39;m here you poor.
+moe_szyslak: not stupid to snail male_singers: suicide. / homer_simpson: boy, this whoa-ho, nuts!
+football_announcer: stinkin&#39;!. not this, take it in case my wondering where you would turn look on the long gayer.
+(short spanish around water?
+moe_szyslak: eh? my bad news is over. it attractive.
+moe_szyslak: okay, open bottle) than i just get a fine.
+moe_szyslak: here
 </pre>
 </div>
 </div>
